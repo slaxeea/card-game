@@ -1,8 +1,8 @@
 /*
-*  File for classes and functions which 
-*  mainly involve cards.
-*  Purpose is not to clogg up the other files :)
-*/
+ *  File for classes and functions which
+ *  mainly involve cards.
+ *  Purpose is not to clogg up the other files :)
+ */
 class Card {
   constructor(color, value, played) {
     this.color = color;
@@ -30,10 +30,12 @@ class Set {
 class Player {
   cards = new Array();
   turn = true;
+  isLying = false;
 }
 class AI {
   cards = new Array();
-  turn = false
+  turn = false;
+  isLying = false;
 }
 
 const cardColors = {
