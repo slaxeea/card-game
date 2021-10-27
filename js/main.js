@@ -1,3 +1,7 @@
+/*
+*  Mainfile, all the functions to initialize the game
+*  Uses functions from the other files
+*/
 function init() {
   set = new Set();
   initCards();
