@@ -21,9 +21,10 @@ function initCards() {
   }
   for (let i = 0; i < 5; i++) {
     card = randomCardThatHasNotBeenPlayed();
-   card.played = true;
-   this.ai2.cards.push(card);
+    card.played = true;
+    this.ai2.cards.push(card);
   }
+  
 }
 
 function randomCardThatHasNotBeenPlayed() {

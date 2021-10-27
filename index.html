@@ -25,10 +25,11 @@
         integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <script src="main.js"></script>
-    <script src="card.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/game.js"></script>
 </head>
 
 <body>
@@ -85,7 +86,7 @@
             value = card.slice(0, -1);
             color = card.replace(value, '');
             card = getCardByValueAndColor(value, color);
-            console.log(card);
+            playerPlayCard(card, $(this));
         })
     </script>
 </body>
