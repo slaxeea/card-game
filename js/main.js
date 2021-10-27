@@ -1,7 +1,7 @@
 /*
-*  Mainfile, all the functions to initialize the game
-*  Uses functions from the other files
-*/
+ *  Mainfile, all the functions to initialize the game
+ *  Uses functions from the other files
+ */
 function init() {
   set = new Set();
   initCards();
@@ -28,7 +28,6 @@ function initCards() {
     card.played = true;
     this.ai2.cards.push(card);
   }
-  
 }
 
 function randomCardThatHasNotBeenPlayed() {
@@ -38,4 +37,9 @@ function randomCardThatHasNotBeenPlayed() {
       return set.cards[rand];
     }
   }
+}
+
+function randomCardFromAi(ai) {
+  rand = Math.floor(Math.random() * 5);
+  return ai.cards[rand];
 }

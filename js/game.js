@@ -23,29 +23,42 @@ function getCardValuePlayed() {
 
 function aiTurn() {
   if (ai1.turn) {
-    aiPlayCard(ai1);
+    aiPlayCard(ai1, 1);
     ai1.turn = false;
     ai2.turn = true;
     aiTurn();
   } else if (ai2.turn) {
-    aiPlayCard(ai2);
+    aiPlayCard(ai2, 2);
     ai2.turn = false;
   }
   player.turn = true;
 }
 
-function aiPlayCard(ai) {
-  console.log(hasCardOfValue(ai), getCardValuePlayed());
+function aiPlayCard(ai, aiIndex) {
+  card = hasCardOfValue(ai, getCardValuePlayed());
+  if (card != false) {
+    $("#common-card").attr("src", "images/" + card.toString() + ".svg");
+    $("#common-card").css("visibility", "visible");
+    index = ai.cards.indexOf(card);
+    $(`ai${aiIndex}-card-${index}`).css("visibility", "hidden");
+    delete ai.cards[index];
+  } else {
+    card = randomCardFromAi(ai);
+    $("#common-card").attr("src", "images/" + card.toString() + ".svg");
+    $("#common-card").css("visibility", "visible");
+    index = ai.cards.indexOf(card);
+    $(`ai${aiIndex}-card-${index}`).css("visibility", "hidden");
+    delete ai.cards[index];
+  }
 }
 
-function hasCardOfValue(playerOrAi, value) { 
-  playerOrAi.cards.forEach(element => {
-    if(element != null){
-      console.log(element.value , getCardValuePlayed());
-      if(element.value == value){
-        return true;
+function hasCardOfValue(playerOrAi, value) {
+  playerOrAi.cards.forEach((element) => {
+    if (element != null) {
+      if (element.value == value) {
+        return card;
       }
     }
   });
   return false;
- }
+}
