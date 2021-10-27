@@ -1,0 +1,39 @@
+body{
+    background-color: green;
+    overflow: hidden;
+}
+.common-container{
+    text-align: center;
+    margin-top: 5vh;
+}
+.card-pit{
+    border: 4px solid white;
+    padding: 10px;
+}
+.player-container{
+    text-align: center;
+    margin-top: 25vh;
+}
+.common-card{
+    margin: 5px;
+    width: 18vh;
+    height: auto;
+    visibility: hidden;
+}
+.player-card{
+    margin: 5px;
+    width: 12vh;
+    height: auto;
+}
+.player-card-hidden{
+    margin: 5px;
+    width: 6vh;
+    height: auto;
+}
+.player-ai-1{
+    rotate: 90deg;
+}.player-ai-2{
+    rotate: -90deg;
+}
+.toast{
+}
