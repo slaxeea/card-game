@@ -12,7 +12,7 @@ body{
 }
 .player-container{
     text-align: center;
-    margin-top: 25vh;
+    margin-top: 2vh;
 }
 .common-card{
     margin: 5px;
@@ -34,4 +34,26 @@ body{
     rotate: 90deg;
 }.player-ai-2{
     rotate: -90deg;
+}
+
+.button-row{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20vh;
+}
+.button{
+    color:white;
+    background-color: transparent;
+    padding: 10px;
+}
+.button:hover{
+    background-color: rgba(255, 255, 255, 0.082);
+    border-radius: 3px;
+}
+#button-lying{
+    border:1px solid red;
+}
+#button-truth{
+    border:1px solid lightgreen;
 }

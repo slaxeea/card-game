@@ -41,5 +41,10 @@ function randomCardThatHasNotBeenPlayed() {
 
 function randomCardFromAi(ai) {
   rand = Math.floor(Math.random() * 5);
-  return ai.cards[rand];
+  card = ai.cards[rand];
+  if (card == undefined) {
+    return randomCardFromAi(ai);
+  } else {
+    return card;
+  }
 }

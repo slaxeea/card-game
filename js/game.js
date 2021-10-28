@@ -10,7 +10,7 @@ function playerPlayCard(card, element) {
     delete player.cards[player.cards.indexOf(card)];
     player.turn = false;
     ai1.turn = true;
-    aiTurn();
+    setTimeout(aiTurn, 1000);
   }
 }
 
@@ -26,7 +26,7 @@ function aiTurn() {
     aiPlayCard(ai1, 1);
     ai1.turn = false;
     ai2.turn = true;
-    aiTurn();
+    setTimeout(aiTurn, 1000);
   } else if (ai2.turn) {
     aiPlayCard(ai2, 2);
     ai2.turn = false;
@@ -40,14 +40,15 @@ function aiPlayCard(ai, aiIndex) {
     $("#common-card").attr("src", "images/" + card.toString() + ".svg");
     $("#common-card").css("visibility", "visible");
     index = ai.cards.indexOf(card);
-    $(`ai${aiIndex}-card-${index}`).css("visibility", "hidden");
+    $(`#ai${aiIndex}-card-${index}`).css("visibility", "hidden");
     delete ai.cards[index];
   } else {
+    ai.isLying = true;
     card = randomCardFromAi(ai);
     $("#common-card").attr("src", "images/" + card.toString() + ".svg");
     $("#common-card").css("visibility", "visible");
     index = ai.cards.indexOf(card);
-    $(`ai${aiIndex}-card-${index}`).css("visibility", "hidden");
+    $(`#ai${aiIndex}-card-${index}`).css("visibility", "hidden");
     delete ai.cards[index];
   }
 }
@@ -61,4 +62,8 @@ function hasCardOfValue(playerOrAi, value) {
     }
   });
   return false;
+}
+
+function playerThinksAiIsLying(thought){
+  console.log(thought);
 }

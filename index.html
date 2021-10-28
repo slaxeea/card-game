@@ -32,7 +32,7 @@
 
 <body>
     <div class="common-container row">
-        <div class="col-4 player-ai-1">
+        <div class="col-4 player-ai-1" id="ai1-card-ankor">
             <img class="player-card-hidden" id="ai1-card-0" src="images/back.svg" alt="">
             <img class="player-card-hidden" id="ai1-card-1" src="images/back.svg" alt="">
             <img class="player-card-hidden" id="ai1-card-2" src="images/back.svg" alt="">
@@ -42,7 +42,7 @@
         <div class="col-4 card-pit">
             <img class="common-card" id="common-card" src="images/10C.svg" alt="">
         </div>
-        <div class="col-4 player-ai-2">
+        <div class="col-4 player-ai-2" id="ai2-card-ankor">
             <img class="player-card-hidden" id="ai2-card-0" src="images/back.svg" alt="">
             <img class="player-card-hidden" id="ai2-card-1" src="images/back.svg" alt="">
             <img class="player-card-hidden" id="ai2-card-2" src="images/back.svg" alt="">
@@ -51,10 +51,23 @@
         </div>
     </div>
 
-    <div class="player-container row">
-        <div class="col-3 ">
+    <div class="button-row">
+
+        <div class="hstack gap-3">
+            <button class="button" disabled id="button-lying">
+                Lying
+            </button>
+            <button class="button" disabled id="button-truth">
+                Truth
+            </button>
         </div>
-        <div class="col-6">
+    </div>
+
+    <div class="player-container row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6" id="player-card-ankor">
             <img class="player-card" id="player-card-0" src="images/10C.svg" alt="">
             <img class="player-card" id="player-card-1" src="images/10C.svg" alt="">
             <img class="player-card" id="player-card-2" src="images/10C.svg" alt="">
@@ -63,31 +76,32 @@
         </div>
     </div>
 
-    <!-- experimental, not sure if I'm ever going to use this. -->
-    <div class="toast align-items-center bottom-1 end-0 position-absolute" role="alert" aria-live="assertive"
-        aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body" id="toast-message">
-                junk
-            </div>
-            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-
     <hr>
+
+
     <script>
-        // I'm sure there's a cleverer way to do this ...
         $(document).ready(function () {
             init();
+
+            $("#button-lying").click(function () {
+                console.log($(this));
+                playerThinksAiIsLying(true);
+            })
+            $("#button-truth").click(function () {
+                playerThinksAiIsLying(false);
+            })
+
+            $(".player-card").click(function () {
+                card = $(this).attr("src").slice(7);
+                card = card.slice(0, -4);
+                value = card.slice(0, -1);
+                color = card.replace(value, '');
+                card = getCardByValueAndColor(value, color);
+                playerPlayCard(card, $(this));
+            });
+
         })
-        $(".player-card").click(function () {
-            card = $(this).attr("src").slice(7);
-            card = card.slice(0, -4);
-            value = card.slice(0, -1);
-            color = card.replace(value, '');
-            card = getCardByValueAndColor(value, color);
-            playerPlayCard(card, $(this));
-        })
+
     </script>
 </body>
 
