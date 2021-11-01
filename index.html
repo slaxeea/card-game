@@ -83,12 +83,11 @@
         $(document).ready(function () {
             init();
 
-            $("#button-lying").click(function () {
-                console.log($(this));
-                playerThinksAiIsLying(true);
+            $("#button-truth").click(function(){
+                console.log($(this))
             })
-            $("#button-truth").click(function () {
-                playerThinksAiIsLying(false);
+            $("#button-lying").click(function(){
+                console.log($(this))
             })
 
             $(".player-card").click(function () {
